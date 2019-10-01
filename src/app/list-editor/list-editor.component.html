@@ -5,7 +5,7 @@
   </div>
   <ng-container [ngSwitch]="showReorderControls">
     <ng-container *ngSwitchCase="true">
-      <kendo-sortable [data]="formArray.controls" (dragEnd)="onSortDragEnd($event)">
+      <kendo-sortable [kendoSortableBinding]="formArray.controls" (dragEnd)="onSortDragEnd($event)">
         <ng-template let-itemForm="item" let-i="index">
           <div class="valueListItem" [formGroup]="itemForm">
             <span class="k-icon k-i-handler-drag"></span>
