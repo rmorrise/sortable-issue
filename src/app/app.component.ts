@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ListItem} from "./item";
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sortable-issue';
+  data: ListItem[] = [
+    {
+      id: 1,
+      label: 'Foo'
+    },
+    {
+      id: 2,
+      label: 'Bar'
+    }
+  ];
+  parentForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.parentForm = this.formBuilder.group({});
+  }
+
+  onListEditorFormCreated($event: FormArray) {
+    this.parentForm.addControl('list', $event);
+  }
 }

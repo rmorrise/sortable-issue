@@ -1,0 +1,28 @@
+<div class="listEditor">
+  <div class="form-group editReorder" *ngIf="reorder">
+    <label for="isReorder" class="control-label">Reorder Items:</label>
+    <kendo-switch [formControl]="isReorder"></kendo-switch>
+  </div>
+  <ng-container [ngSwitch]="showReorderControls">
+    <ng-container *ngSwitchCase="true">
+      <kendo-sortable [data]="formArray.controls" (dragEnd)="onSortDragEnd($event)">
+        <ng-template let-itemForm="item" let-i="index">
+          <div class="valueListItem" [formGroup]="itemForm">
+            <span class="k-icon k-i-handler-drag"></span>
+            <input type="hidden" formControlName="id" readonly="readonly"/>
+            <input type="text" class="k-textbox" formControlName="label" readonly="readonly"/>
+          </div>
+        </ng-template>
+      </kendo-sortable>
+      <blockquote class="reorderInstructions">Drag and drop to reorder items.</blockquote>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <div class="listItemWrapper" *ngFor="let form of formArray.controls; let i = index">
+        <div class="valueListItem" [formGroup]="form">
+          <input type="hidden" formControlName="id"/>
+          <input type="text" class="k-textbox" formControlName="label"/>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
