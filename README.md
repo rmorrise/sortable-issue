@@ -1,27 +1,16 @@
-# SortableIssue
+# Sortable Issue
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+## Steps to reproduce:
 
-## Development server
+1) Toggle "Reorder Items" to ON
+2) Drag and drop to reorder with "Foo" as the second item
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Expected results:
 
-## Code scaffolding
+* Items should appear reversed when dragging "Foo" below "Bar"
+* After dropping, form control values should be "Bar", then "Foo"
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Actual results:
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* Items appear as "Foo", "Foo" while dragging
+* After dropping, the form control values are not altered
